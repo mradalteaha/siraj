@@ -49,7 +49,7 @@ def get_all_tasks(myQueue,tasks_list): #producer
                     tasks_list[file_path] = [0, file_path]
                     main_lock.release()
                     myQueue.put(file_path)
-                    print("tasks in queue")
+                    print("tasks in queue :")
                     print(list(myQueue.queue))
                     
 
