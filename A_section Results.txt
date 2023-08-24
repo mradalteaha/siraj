@@ -1,0 +1,33 @@
+printing task on queue
+['task2.py']
+printing task on queue
+['task2.py', 'task3.py']
+task 1 started at 23:13:38
+approximate time to complete  5printing task on waiting
+  seconds
+['task4.py']
+printing task on waiting
+['task4.py', 'task5.py']
+task 1 compleated at 23:13:43
+printing task on queue
+['task2.py', 'task3.py', 'task4.py']
+processing tasks
+task 2 started at 23:13:43
+approximate time to complete  4  seconds
+task 2 compleated at 23:13:47
+printing task on queue
+['task3.py', 'task4.py', 'task5.py']
+processing tasks
+task 3 started at 23:13:47
+approximate time to complete  8  seconds
+task 3 compleated at 23:13:55
+processing tasks
+task 4 started at 23:13:55
+approximate time to complete  7  seconds
+task 4 compleated at 23:14:02
+processing tasks
+task 5 started at 23:14:02
+approximate time to complete  8  seconds
+task 5 compleated at 23:14:10
+processing tasks
+done
