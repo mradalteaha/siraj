@@ -1,63 +1,12 @@
-C:\Users\Disaster\PycharmProjects\siraj\venv\Scripts\python.exe C:\Users\Disaster\PycharmProjects\siraj\mainB.py 
+task1.py  started at  16:20:50
+task2.py  started at  16:20:50
+task3.py  started at  16:20:50
+task1.py  completed  16:20:56
+task4.py  started at  16:20:56
+task3.py  completed  16:21:00
+task5.py  started at  16:21:00
+task4.py  completed  16:21:03
+task5.py  completed  16:21:05
+task2.py  completed  16:21:10
 
-processing tasks
-
-printing task on queue
-
-processing tasks
-
-[]
-
-
-processing tasks
-
-
-printing task on queue
-['task2.py']
-
-processing tasks
-
-
-processing tasks
-
-
-printing task on queue
-['task3.py']
-task 1 started at 00:42:05
-approximate time to complete  
-printing task on queue
-['task3.py', 'task4.py']
-16  seconds
-task 2 started at 00:42:05
-approximate time to complete  7  seconds
-
-printing task on queue
-['task3.py', 'task4.py', 'task5.py']
-task 2 compleated at 00:42:12
-
-processing tasks
-
-task 3 started at 00:42:12
-approximate time to complete  11  seconds
-task 1 compleated at 00:42:21
-
-processing tasks
-
-task 4 started at 00:42:21
-approximate time to complete  5  seconds
-task 3 compleated at 00:42:23
-
-processing tasks
-
-task 5 started at 00:42:23
-approximate time to complete  13  seconds
-task 4 compleated at 00:42:26
-
-processing tasks
-
-task 5 compleated at 00:42:36
-
-processing tasks
-
-
-done
+done ! all tasks completed !! {'task1.py': [1, 'task1.py'], 'task2.py': [1, 'task2.py'], 'task3.py': [1, 'task3.py'], 'task4.py': [1, 'task4.py'], 'task5.py': [1, 'task5.py']}

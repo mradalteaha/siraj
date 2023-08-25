@@ -1,27 +1,12 @@
-tasks in queue
-[]
-tasks in queue
-['task2.py']
-task 1 started attasks in queue
- ['task2.py', 'task3.py']
-21:58:49
-approximate time to complete  5  seconds
-tasks in queue
-['task2.py', 'task3.py', 'task4.py']
-task 1 compleated at 21:58:54
-tasks in queue
-['task3.py', 'task4.py', 'task5.py']
-task 2 started at 21:58:54
-approximate time to complete  13  seconds
-task 2 compleated at 21:59:07
-task 3 started at 21:59:07
-approximate time to complete  20  seconds
-task 3 compleated at 21:59:27
-task 4 started at 21:59:27
-approximate time to complete  8  seconds
-task 4 compleated at 21:59:35
-task 5 started at 21:59:35
-approximate time to complete  6  seconds
-task 5 compleated at 21:59:41
+task1.py  started at  15:55:27
+task1.py  completed  15:55:43
+task2.py  started at  15:55:43
+task2.py  completed  15:55:53
+task3.py  started at  15:55:53
+task3.py  completed  15:56:04
+task4.py  started at  15:56:04
+task4.py  completed  15:56:22
+task5.py  started at  15:56:22
+task5.py  completed  15:56:37
 done
 {'task1.py': [1, 'task1.py'], 'task2.py': [1, 'task2.py'], 'task3.py': [1, 'task3.py'], 'task4.py': [1, 'task4.py'], 'task5.py': [1, 'task5.py']}

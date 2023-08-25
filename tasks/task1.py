@@ -4,17 +4,8 @@ from datetime import datetime
 
 def task():
 
-    now = datetime.now()
-
-    current_time = now.strftime("%H:%M:%S")
-    print('task 1 started at',current_time)
     sleeptime = random.randint(5,20)
-    print('approximate time to complete ', str(sleeptime), ' seconds')
     sleep(sleeptime)
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-
-    print('task 1 compleated at',current_time)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
