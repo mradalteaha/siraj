@@ -73,11 +73,10 @@ def get_all_tasks(myQueue,tasks_list,lock): #producer
 def task_to_process(taskname):
     try:
         
-        with open("./tasks/" + taskname) as f:
+        with open(os.path.join(tasks_path, taskname)) as f:
             exec(f.read())
     except OSError:
         print("error on task to process unable to open file")
-
 
 
 def main():
