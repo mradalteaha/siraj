@@ -16,7 +16,8 @@ tasks_path = './tasks'
 consumers_num = 3
 all_tasks = dict()  # completed and uncompleted
 main_lock = threading.Lock()
-t_end = time.time() + 60 * 3
+time_to_run = 3
+t_end = time.time() + 60 * time_to_run
 
 
 processing_queue = queue.Queue(Queue_Size)  # creating global instance of the queue
@@ -91,10 +92,10 @@ def main():
             thread.start()
             
         #killing the threads after two minutes
-        importing_thread.join(120)
+        importing_thread.join(time_to_run*60)
         # Wait for all threads to complete
         for thread in threads:
-            thread.join(300)
+            thread.join(time_to_run*120)
 
 
 

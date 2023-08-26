@@ -7,15 +7,17 @@ from threading import Thread
 import threading
 from datetime import datetime
 import time
-t_end = time.time() + 60 * 1
+
 
 
 # configuration Variables
 
 Queue_Size = 3
 tasks_path = './tasks'
-all_tasks = dict()  # completed and uncompleted
+all_tasks = dict()  # completed and uncompleted {'name_of_the_file':[status,'name_of_the_file']}
 main_lock = threading.Lock()
+time_to_run = 3
+t_end = time.time() + 60 * time_to_run
 
 processing_queue = queue.Queue(Queue_Size)  # creating global instance of the queue
 
@@ -25,8 +27,6 @@ def process_next_task(myQueue,tasks_list,lock):#consumer
     try:
         while time.time() < t_end:
             if not myQueue.empty():
-                #print('performing a task')
-                #print(list(myQueue.task_queue.queue))
                 #critical section
                 lock.acquire()
                 task_function = myQueue.get()  # poping the top of the queue
@@ -56,12 +56,10 @@ def get_all_tasks(myQueue,tasks_list,lock): #producer
                 if os.path.isfile(os.path.join(tasks_path, file_path)):
                     # add filename to list
                     if not tasks_list.get(file_path):  # it's new uncompleted task
-                        #print("adding the task to queue for the first time" , file_path)
                         lock.acquire()
                         tasks_list[file_path] = [0, file_path]
                         lock.release()
                         myQueue.put(file_path)
-                        #print("tasks in queue :",list(myQueue.queue))
         return 0
     except:
         print("error on task to process unable to open file")
@@ -86,8 +84,8 @@ def main():
 
         processing_thread.start()
         #killing the threads after two minutes
-        importing_thread.join(120)
-        processing_thread.join(120)
+        importing_thread.join(time_to_run*60)
+        processing_thread.join(time_to_run*60)
         
         if importing_thread.is_alive():
             importing_thread.join()
