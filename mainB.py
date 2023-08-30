@@ -7,16 +7,13 @@ from threading import Thread
 import threading
 from datetime import datetime
 import time
-
+import logging
+from config import  tasks_path ,consumers_num , Queue_Size , time_to_run
 
 # configuration Variables
-
-Queue_Size = 4
-tasks_path = './tasks'
-consumers_num = 3
-all_tasks = dict()  # completed and uncompleted
+all_tasks = dict()
 main_lock = threading.Lock()
-time_to_run = 3
+
 t_end = time.time() + 60 * time_to_run
 
 
@@ -24,18 +21,15 @@ processing_queue = queue.Queue(Queue_Size)  # creating global instance of the qu
 
 
 
-#this function is responsible for executing the tasks in the queue
+
 def process_next_task(myQueue,tasks_list,lock):#consumer
+    '''this function is responsible for executing the tasks in the queue'''
     while time.time() < t_end:
         if not myQueue.empty():
-            #print('performing a task')
-            #print(list(myQueue.task_queue.queue))
             #critical section
             lock.acquire()
-            #thread_name = threading.current_thread().name
             thread_local_data = threading.local()
             thread_local_data.task = myQueue.get()  # poping the top of the queue
-            #print("i'm thread", thread_name, "and i'm taking task ->" ,thread_local_data.task)
             tasks_list[thread_local_data.task][0]=1
             lock.release()
             if thread_local_data.task:
@@ -58,26 +52,25 @@ def process_next_task(myQueue,tasks_list,lock):#consumer
 
 #this function is responsible for importing the new tasks or already one from tasks folder
 def get_all_tasks(myQueue,tasks_list,lock): #producer
+    '''this function import the scripts from the directory and put it in the queue if there is 
+    available spot'''
     while time.time() < t_end:
         for file_path in os.listdir(tasks_path):
-            # check if current file_path is a file
             if os.path.isfile(os.path.join(tasks_path, file_path)):
-                # add filename to list
                 if not tasks_list.get(file_path):  # it's new uncompleted task
-                    #print("adding the task to queue for the first time" , file_path)
                     tasks_list[file_path] = [0, file_path]
                     myQueue.put(file_path)
-                    #print("\ntasks in queue :\n",list(myQueue.queue))
         
                     
 
 def task_to_process(taskname):
+    '''this function takes the script name and execute it '''
     try:
         
         with open(os.path.join(tasks_path, taskname)) as f:
             exec(f.read())
     except OSError:
-        print("error on task to process unable to open file")
+        logging.error("error on task to process unable to open file")
 
 
 def main():
